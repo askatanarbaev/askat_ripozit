@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="w3-card-6" style="width:56%">
+
+            <div class="container">
+                {% for img in posts %}
+                <div class="imagepadding">
+                    <div class="panel panel-primary">
+                        <p class="usernamehome-dp">
+                            <strong> created_by: {{img.created_by}}</strong>
+                        </p>
+                            <img src="{{ img.image.url }}" class="img-responsive" style="width:100%;margin-left: 0%;margin-top:15px; ">
+                        </a>
+                        <div class="container">
+                            <div class='likesect'>
+                                <br>
+                                <a href="#" style="text-decoration:none">{{img.description}}</a>
+                        <div class='commentsection'>
+                            <br>
+                            <input type='text' id='cmnt' placeholder='Add a comment...'>
+                            <a href="#" class="btn btn-outline-dark">кометарии</a>
+                            <hr>
+                            <br>
+                            <span class='dot02'></span>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

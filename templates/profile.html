@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <img src="{% static 'img/avatar.png' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ p.user }}</h5>
+  </div>
+</div>
+<br>
+      <a href="#" class="btn btn-outline-dark">Редактировать</a>
+      ****
+      <a href="#" class="btn btn-outline-dark">Новый пост</a>
+      ***
+      <a href="#" class="btn btn-outline-dark">Выйти</a>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Bio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ p.first_name }}</td>
+      <td>{{ p.last_name }}</td>
+      <td>{{ p.phone }}</td>
+      <td>{{ p.bio}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+<img src="{% static 'img/avatar.png' %}">
