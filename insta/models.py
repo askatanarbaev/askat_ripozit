@@ -10,7 +10,6 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30, blank=True)
     phone = models.CharField(max_length=20, blank=True,)
     bio = models.CharField(max_length=350, blank=True)
-    updated_by = models.OneToOneField(User, on_delete=models.CASCADE,related_name='update_profile')
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
