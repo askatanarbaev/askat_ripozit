@@ -86,14 +86,14 @@ def edit_profile(request):
 			return redirect('my_profile')
 	else:
 		p_form = CreateProfileForm(instance=request.user.profile)
-	return render(request, 'edit_profile.html', locals())
-
+	return render(request, 'edit_profile.html', {'form': p_form})
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
 	fields = ['description', 'image']
 	template_name = 'update_post.html'
+	context_object_name = 'post'
 
 	def form_valid(self, form):
 		form.instance.username = self.request.user
