@@ -1,16 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.urls import reverse
-from django.contrib import messages
-from django.core.paginator import Paginator
-from django.contrib.auth.models import User
 from .forms import NewCommentForm, NewPostForm, CreateProfileForm
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import *
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
-import json
+
 
 
 class PostListView(ListView):
