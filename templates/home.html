@@ -19,7 +19,10 @@
                                 <p href="#" style="text-decoration:none">{{img.description}}</p>
                         <div class='commentsection'>
                             <br>
-                            <a href="#" class="btn btn-outline-dark">delete</a>
+                            {% if img.created_by == user %}
+                            <a href="{% url 'post-delete' img.pk %}" class="btn btn-outline-dark">delete</a>
+                            <a href="{% url 'post-detail' img.pk %}" class="btn btn-outline-dark">Оставить комент</a>
+                            {% endif %}
                             <hr>
                             <br>
                             <span class='dot02'></span>
