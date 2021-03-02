@@ -10,7 +10,7 @@
   </div>
 </div>
 <br>
-      <a href="#" class="btn btn-outline-dark">Редактировать</a>
+      <a href="{% url 'edit_profile' %}" class="btn btn-outline-dark">Редактировать</a>
       ****
       <a href="{% url 'create_post' %}" class="btn btn-outline-dark">Новый пост</a>
       ***
@@ -41,9 +41,11 @@
   <div class="card" style="width: 18rem;">
   <img src="{{ img.image.url }}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{img.created_by}}</h5>
-    <p class="card-text">{{img.description}}.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="card-text">{{img.description}}</p>
+  </div>
+  <div class="card-body">
+    <a href="#" class="btn btn-outline-dark">Редактировать пост</a>
+    <a href="#" class="btn btn-outline-dark">Удалить пост</a>
   </div>
 </div>
   {% endif %}
@@ -52,8 +54,8 @@
 
 {% endblock %}
 
-<div class="card" style="width: 18rem;">
-  <img src="" class="card-img-top" alt="...">
+<div class="card-group" style="width: 5rem;">
+  <img src="" class="img-thumbnail" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{img.created_by}}</h5>
     <p class="card-text">{{img.description}}.</p>
