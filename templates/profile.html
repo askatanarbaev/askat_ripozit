@@ -10,11 +10,11 @@
   </div>
 </div>
 <br>
-      <a href="#" class="btn btn-outline-dark">Редактировать</a>
+      <a href="{% url 'edit_profile' %}" class="btn btn-outline-dark">Редактировать</a>
       ****
-      <a href="#" class="btn btn-outline-dark">Новый пост</a>
+      <a href="{% url 'create_post' %}" class="btn btn-outline-dark">Новый пост</a>
       ***
-      <a href="#" class="btn btn-outline-dark">Выйти</a>
+      <a href="{% url 'logout' %}" class="btn btn-outline-dark">Выйти</a>
 <br>
 <br>
 <table class="table">
@@ -35,8 +35,31 @@
     </tr>
   </tbody>
 </table>
+<div class="card-group">
+  {% for img in user_posts %}
+  {% if img.created_by == user %}
+  <div class="card" style="width: 18rem;">
+  <img src="{{ img.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">{{img.description}}</p>
+  </div>
+  <div class="card-body">
+    <a href="#" class="btn btn-outline-dark">Редактировать пост</a>
+    <a href="#" class="btn btn-outline-dark">Удалить пост</a>
+  </div>
+</div>
+  {% endif %}
+  {% endfor %}
+</div>
 
 {% endblock %}
 
-
+<div class="card-group" style="width: 5rem;">
+  <img src="" class="img-thumbnail" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{img.created_by}}</h5>
+    <p class="card-text">{{img.description}}.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 <img src="{% static 'img/avatar.png' %}">
