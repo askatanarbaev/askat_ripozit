@@ -54,27 +54,12 @@ def post_create(request):
 
 # delete and update
 
-# def edit_profile(request):
-#     post = Profile.objects.all()
-#     if request == 'POST':
-#         form = CreateProfileForm(request.POST, instance=post)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.created_by = request.user
-#             post.save()
-#             return redirect('home')
-#     else:
-#         form = CreateProfileForm(instance=post)
-#     return render(request, 'edit_profile.html', locals())
-
-
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         post.delete()
-        return redirect('posts_list')
-    return render(request, 'blog/post/post_delete.html', {'post': post})
-
+        return redirect('my_profile')
+    return render(request, 'post_delete.html', {'post': post})
 
 
 @login_required
@@ -94,6 +79,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	fields = ['description', 'image']
 	template_name = 'update_post.html'
 	context_object_name = 'post'
+	success_url = '/my_profile/'
 
 	def form_valid(self, form):
 		form.instance.username = self.request.user
@@ -104,16 +90,6 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		if self.request.user == post.created_by:
 			return True
 		return False
-
-
-@login_required
-def post_delete(request, pk):
-	post = Post.objects.get(pk=pk)
-	if request.user == post.created_by:
-		Post.objects.get(pk=pk).delete()
-	return redirect('home')
-
-
 
 
 # work with comments
@@ -134,10 +110,3 @@ def post_detail(request, pk):
 		form = NewCommentForm()
 	return render(request, 'post_detail.html', locals())
 
-# search
-
-@login_required
-def search_posts(request):
-	query = request.GET.get('p')
-	object_list = Post.objects.filter(description__icontains=query)
-	return render(request, "search_posts.html", locals())

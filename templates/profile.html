@@ -44,8 +44,8 @@
     <p class="card-text">{{img.description}}</p>
   </div>
   <div class="card-body">
-    <a href="#" class="btn btn-outline-dark">Редактировать пост</a>
-    <a href="#" class="btn btn-outline-dark">Удалить пост</a>
+    <a href="{% url 'post-update' img.pk %}" class="btn btn-outline-dark">Редактировать пост</a>
+    <a href="{% url 'post-delete' img.pk %}" class="btn btn-outline-dark">Удалить пост</a>
   </div>
 </div>
   {% endif %}
