@@ -6,6 +6,7 @@ django template
 1) create virtualenv and activate create: python3 -m venv venv activate: .venv/bin/activate
 
 2) pip install -r requairments.txt
+    pip install django-widget-tweaks
 
 3) create database postgress
 
